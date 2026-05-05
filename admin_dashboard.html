@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - BU E-Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <aside class="dashboard-sidebar">
+            <a href="index.html" class="brand">
+                <img src="logo.png" alt="Bugema University logo">
+                <div class="brand-copy">
+                    <strong>BU E-Library</strong>
+                    <span>Admin panel</span>
+                </div>
+            </a>
+            <div class="sidebar-section-title">Management</div>
+            <nav class="sidebar-nav">
+                <a href="admin_dashboard.html" class="sidebar-link is-active"><i class="fa-solid fa-chart-line"></i><span>Dashboard</span></a>
+                <a href="#" class="sidebar-link"><i class="fa-solid fa-users"></i><span>Users</span></a>
+                <a href="#" class="sidebar-link"><i class="fa-solid fa-book"></i><span>Books</span></a>
+                <a href="#" class="sidebar-link"><i class="fa-solid fa-inbox"></i><span>Requests</span></a>
+                <a href="#" class="sidebar-link"><i class="fa-solid fa-calendar-days"></i><span>Events</span></a>
+                <a href="#" class="sidebar-link"><i class="fa-solid fa-briefcase"></i><span>Services</span></a>
+                <a href="#" class="sidebar-link"><i class="fa-solid fa-file-lines"></i><span>Reports</span></a>
+                <a href="#" class="sidebar-link"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+            </nav>
+        </aside>
+
+        <main class="dashboard-content">
+            <div class="dashboard-topbar">
+                <div class="dashboard-search">
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-magnifying-glass input-icon"></i>
+                        <input class="input has-icon" type="search" placeholder="Search users, books, requests, or logs">
+                    </div>
+                </div>
+                <div class="topbar-actions">
+                    <button class="icon-button" type="button" aria-label="Notifications"><i class="fa-regular fa-bell"></i></button>
+                    <div class="profile-chip">
+                        <span class="avatar">AD</span>
+                        <div><strong>Admin User</strong><div class="field-note">Administrator</div></div>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="surface-card stat-card"><div class="stat-label">Total Users</div><div class="stat-value">4,286</div><div class="stat-meta">+12% this month</div></div>
+                <div class="surface-card stat-card"><div class="stat-label">Books</div><div class="stat-value">1,248</div><div class="stat-meta">34 new uploads</div></div>
+                <div class="surface-card stat-card"><div class="stat-label">Requests</div><div class="stat-value">186</div><div class="stat-meta">29 pending approval</div></div>
+                <div class="surface-card stat-card"><div class="stat-label">Events</div><div class="stat-value">14</div><div class="stat-meta">3 scheduled this week</div></div>
+            </div>
+
+            <div class="quick-actions" style="margin-bottom:24px">
+                <a href="request_book.html" class="btn btn-primary"><i class="fa-solid fa-plus"></i>Add Book</a>
+                <a href="#" class="btn btn-secondary"><i class="fa-solid fa-check"></i>Approve Requests</a>
+                <a href="event_registration.html" class="btn btn-secondary"><i class="fa-solid fa-calendar-plus"></i>Create Event</a>
+            </div>
+
+            <div class="dashboard-grid">
+                <section class="dashboard-stack">
+                    <div class="dashboard-panel">
+                        <div class="panel-header">
+                            <div><h2 class="panel-title">Recent Requests</h2><p class="panel-subtitle">Latest book and service requests awaiting review.</p></div>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="data-table">
+                                <thead><tr><th>ID</th><th>User</th><th>Request</th><th>Date</th><th>Status</th></tr></thead>
+                                <tbody>
+                                    <tr><td>RQ-201</td><td>Mary N.</td><td>Advanced Nursing Practice</td><td>29 Apr</td><td><span class="status-badge status-pending">Pending</span></td></tr>
+                                    <tr><td>RQ-198</td><td>Daniel K.</td><td>Printing Service</td><td>28 Apr</td><td><span class="status-badge status-success">Approved</span></td></tr>
+                                    <tr><td>RQ-193</td><td>Faith A.</td><td>Research Support</td><td>28 Apr</td><td><span class="status-badge status-pending">Pending</span></td></tr>
+                                    <tr><td>RQ-190</td><td>Joel M.</td><td>Inter-Library Loan</td><td>27 Apr</td><td><span class="status-badge status-danger">Escalated</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-panel">
+                        <div class="panel-header">
+                            <div><h2 class="panel-title">New Users</h2><p class="panel-subtitle">Recently created accounts across all roles.</p></div>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="data-table">
+                                <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Joined</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Josephine T.</td><td>josephine@bugema.ac.ug</td><td>Student</td><td>Today</td></tr>
+                                    <tr><td>Samuel B.</td><td>samuel@bugema.ac.ug</td><td>Staff</td><td>Today</td></tr>
+                                    <tr><td>Grace N.</td><td>grace@bugema.ac.ug</td><td>Student</td><td>Yesterday</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="dashboard-stack">
+                    <div class="dashboard-panel">
+                        <div class="panel-header">
+                            <div><h2 class="panel-title">Activity Logs</h2><p class="panel-subtitle">Recent system actions and approvals.</p></div>
+                        </div>
+                        <div class="activity-list">
+                            <div class="list-item"><p class="list-item-title">Book upload approved</p><p class="list-item-meta">Digital Marketing Essentials was published 18 minutes ago.</p></div>
+                            <div class="list-item"><p class="list-item-title">Role updated</p><p class="list-item-meta">Staff access granted to Sarah N. 1 hour ago.</p></div>
+                            <div class="list-item"><p class="list-item-title">Event published</p><p class="list-item-meta">Research Writing Clinic was added to the calendar.</p></div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-panel">
+                        <div class="panel-header">
+                            <div><h2 class="panel-title">Priority Alerts</h2><p class="panel-subtitle">Items requiring immediate action.</p></div>
+                        </div>
+                        <div class="notification-list">
+                            <div class="list-item"><p class="list-item-title">12 pending book requests</p><p class="list-item-meta">Most are from final-year students.</p></div>
+                            <div class="list-item"><p class="list-item-title">3 event approvals due today</p><p class="list-item-meta">Confirm speakers and seats.</p></div>
+                            <div class="list-item"><p class="list-item-title">Storage nearing threshold</p><p class="list-item-meta">Digital archive is at 86% capacity.</p></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

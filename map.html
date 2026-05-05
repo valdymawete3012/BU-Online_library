@@ -1,0 +1,55 @@
+flowchart TD
+    A[Home]
+
+    %% Search
+    A --> B[Search Catalog]
+    B --> B1[Search Results<br/>(Filters: Title, Subject, Type, Availability)]
+
+    %% E-Books
+    A --> C[E-Books]
+    C --> C1[Categories]
+    C1 --> C1a[Science]
+    C1 --> C1b[Literature]
+    C1 --> C1c[History]
+    C --> C2[Book Details<br/>(Cover, Summary, Author, Ratings, Reviews)]
+    C --> C3[Request a Book<br/>(Application Form)]
+
+    %% Journals
+    A --> D[Journals]
+    D --> D1[Journal List]
+    D --> D2[Articles<br/>(PDF Download)]
+
+    %% Special Books
+    A --> E[Special Books]
+    E --> E1[Featured Books]
+    E --> E2[Rare Collections]
+    E --> E3[Staff Picks]
+
+    %% Digital Events
+    A --> F[Digital Events]
+    F --> F1[Event List]
+    F --> F2[Event Details]
+    F --> F3[Event Registration<br/>(Application Form)]
+
+    %% Services
+    A --> G[Services]
+    G --> G1[Printing Services<br/>(Application Form)]
+    G --> G2[Research Support<br/>(Application Form)]
+    G --> G3[Study Assistance]
+    G --> G4[Copy & Print Services]
+
+    %% User Account
+    A --> H[User Account]
+    H --> H1[Sign Up<br/>(Application Form)]
+    H --> H2[Login]
+    H --> H3[User Profile]
+    H --> H4[Borrowed Books]
+    H --> H5[Download History]
+
+    %% Other Sections
+    A --> I[Recommended / Popular Books]
+    A --> J[Announcements / News]
+    A --> K[Help / Contact Us]
+    K --> K1[FAQ]
+    K --> K2[Search Help]
+    K --> K3[Submit Ticket<br/>(Application Form)]

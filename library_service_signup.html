@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Service Sign-Up - BU E-Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-shell">
+    <header class="site-header"><div class="site-header-inner"><a href="index.html" class="brand"><img src="logo.png" alt="Bugema University logo"><div class="brand-copy"><strong>BU E-Library</strong><span>Digital knowledge hub</span></div></a><button class="header-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleSiteNav(this)"><i class="fa-solid fa-bars"></i></button><nav class="site-nav" id="siteNav"><div class="site-nav-links"><a href="index.html">Home</a><a href="resources.html">E-Books</a><a href="services.html">Services</a><a href="events.html">Digital Events</a><a href="special.html">Special Books</a><a href="contact.html">Help</a></div><div class="site-nav-auth"><a href="login.html">Login</a><a href="signup.html" class="btn btn-primary">Sign Up</a></div></nav></div></header>
+    <main class="site-main">
+        <div class="page-container">
+            <section class="hero-card"><div class="eyebrow">Service Enrollment</div><h1 class="page-title">Library Service Sign-Up</h1><p class="page-subtitle">Register interest in library services so the BU E-Library team can follow up with the right support channel.</p></section>
+            <section class="section">
+                <div class="form-card" style="padding:28px">
+                    <form class="form-grid" onsubmit="handleLoadingSubmit(event, this)">
+                        <div class="field-split">
+                            <div class="field-row"><label class="field-label" for="service-name">Name</label><input class="input" id="service-name" type="text" placeholder="Enter your full name" required></div>
+                            <div class="field-row"><label class="field-label" for="service-email">Email</label><input class="input" id="service-email" type="email" placeholder="name@bugema.ac.ug" required></div>
+                        </div>
+                        <div class="field-row"><label class="field-label" for="service-type">Service Type</label><select class="select" id="service-type" required><option value="">Choose a service</option><option>E-Book Access</option><option>Research Support</option><option>Printing Services</option><option>Inter-Library Loans</option><option>Study Room Booking</option></select></div>
+                        <div class="field-row"><label class="field-label" for="service-notes">Notes</label><textarea class="textarea" id="service-notes" placeholder="Share any extra details about what you need or when you would like support."></textarea></div>
+                        <button class="btn btn-primary" type="submit" data-loading-text="Submitting sign-up...">Submit Sign-Up</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="site-footer-inner"><div class="footer-grid"><div><h3 class="footer-title">About</h3><p class="footer-text">Bugema University E-Library provides trusted access to books, events, and academic support services for students and staff.</p></div><div><h3 class="footer-title">Quick Links</h3><div class="footer-links"><a href="index.html">Home</a><a href="resources.html">E-Books</a><a href="events.html">Digital Events</a><a href="special.html">Special Books</a></div></div><div><h3 class="footer-title">Services</h3><div class="footer-links"><a href="services.html">Research Support</a><a href="services.html">Printing Services</a><a href="library_service_signup.html">Service Sign-Up</a><a href="request_book.html">Request a Book</a></div></div><div><h3 class="footer-title">Contact</h3><p class="footer-text">Bugema University, Kampala<br>library@bu.ac.ug<br>+256 700 000 000</p></div></div><div class="footer-bottom"><span>&copy; 2026 Bugema University E-Library</span><span>Privacy Policy | Terms of Use | Accessibility</span></div></div></footer>
+    <script>
+        function toggleSiteNav(button){const nav=document.getElementById('siteNav');const open=nav.classList.toggle('is-open');button.setAttribute('aria-expanded',String(open));}
+        function handleLoadingSubmit(event,form){event.preventDefault();const button=form.querySelector('button[type="submit"]');const original=button.textContent;button.disabled=true;button.textContent=button.dataset.loadingText||'Loading...';setTimeout(()=>{button.disabled=false;button.textContent=original;},1400);}
+    </script>
+</body>
+</html>

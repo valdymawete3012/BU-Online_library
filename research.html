@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Support - Bugema University Online Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-['Inter'] bg-white text-gray-800">
+    <!-- Sticky Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-[#003366] shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo at Top-Left (clickable to Home) -->
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="logo.png" alt="Bugema University Logo" class="w-14 h-14 object-contain">
+                    <span class="text-white font-semibold text-lg hidden sm:block">Bugema University</span>
+                </a>
+                
+                <!-- Centered Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">Home</a>
+                    <a href="resources.html" class="nav-link text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">E-Books</a>
+                    <a href="services.html" class="nav-link text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">Services</a>
+                    <a href="events.html" class="nav-link text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">Digital Events</a>
+                    <a href="special.html" class="nav-link text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">Special Books</a>
+                    <a href="contact.html" class="nav-link text-[#FFCC00] font-medium">Help</a>
+                    <a href="login.html" class="nav-link text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">Login</a>
+                    <a href="signup.html" class="nav-link bg-[#FFCC00] text-[#003366] px-4 py-2 rounded-full font-semibold hover:bg-white transition-colors duration-300">Sign Up</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" type="button" aria-label="Toggle mobile navigation menu" aria-expanded="false" title="Open or close the mobile navigation menu" class="md:hidden text-white hover:text-[#FFCC00] focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#003366] border-t border-blue-800">
+            <div class="px-4 py-4 space-y-2">
+                <a href="index.html" title="Go to the homepage" class="mobile-nav-link block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">Home</a>
+                <a href="resources.html" class="mobile-nav-link block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">E-Books</a>
+                <a href="services.html" class="mobile-nav-link block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">Services</a>
+                <a href="events.html" class="mobile-nav-link block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">Digital Events</a>
+                <a href="special.html" class="mobile-nav-link block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">Special Books</a>
+                <a href="contact.html" class="mobile-nav-link block text-[#FFCC00] py-2 font-semibold">Help</a>
+                <a href="login.html" class="mobile-nav-link block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">Login</a>
+                <a href="signup.html" class="mobile-nav-link block bg-[#FFCC00] text-[#003366] px-4 py-2 rounded-lg font-semibold text-center mt-2">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Banner Image -->
+    <section class="relative w-full" style="min-height: 80vh;">
+        <img src="library 2.png" alt="Bugema University Library Environment" class="w-full h-full object-cover absolute inset-0">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#003366]/70 via-[#003366]/50 to-transparent"></div>
+        <div class="relative z-10 flex items-center justify-center min-h-[80vh] px-4">
+            <div class="text-center text-white max-w-4xl mx-auto">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-lg">Research Support</h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto drop-shadow-md">
+                    Comprehensive tools, guidance, and subject-focused resources designed to keep your academic research clear, focused, and well supported.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Research Banner -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#003366] mb-4">Supporting Student Research</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                    Access comprehensive resources and tools to enhance your academic research and learning experience.
+                </p>
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-2xl">
+                <img src="Nuese student.png" alt="Student engaged in research" class="w-full h-auto object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#003366] mb-4">Research Tools</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                    Essential resources to help you with your academic research journey.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="resources.html" class="quick-link group p-6 bg-gray-50 rounded-xl text-center hover:bg-[#003366] transition-all duration-300">
+                    <div class="w-12 h-12 mx-auto bg-[#003366] group-hover:bg-[#FFCC00] rounded-full flex items-center justify-center mb-3 transition-colors duration-300">
+                        <svg class="w-6 h-6 text-white group-hover:text-[#003366]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-[#003366] group-hover:text-white transition-colors duration-300">Library Catalog</h3>
+                </a>
+                
+                <a href="reader.html" class="quick-link group p-6 bg-gray-50 rounded-xl text-center hover:bg-[#003366] transition-all duration-300">
+                    <div class="w-12 h-12 mx-auto bg-[#003366] group-hover:bg-[#FFCC00] rounded-full flex items-center justify-center mb-3 transition-colors duration-300">
+                        <svg class="w-6 h-6 text-white group-hover:text-[#003366]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-[#003366] group-hover:text-white transition-colors duration-300">E-Books</h3>
+                </a>
+                
+                <a href="resources.html" class="quick-link group p-6 bg-gray-50 rounded-xl text-center hover:bg-[#003366] transition-all duration-300">
+                    <div class="w-12 h-12 mx-auto bg-[#003366] group-hover:bg-[#FFCC00] rounded-full flex items-center justify-center mb-3 transition-colors duration-300">
+                        <svg class="w-6 h-6 text-white group-hover:text-[#003366]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-[#003366] group-hover:text-white transition-colors duration-300">Journals</h3>
+                </a>
+                
+                <a href="research_support_request.html" class="quick-link group p-6 bg-gray-50 rounded-xl text-center hover:bg-[#003366] transition-all duration-300">
+                    <div class="w-12 h-12 mx-auto bg-[#003366] group-hover:bg-[#FFCC00] rounded-full flex items-center justify-center mb-3 transition-colors duration-300">
+                        <svg class="w-6 h-6 text-white group-hover:text-[#003366]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-[#003366] group-hover:text-white transition-colors duration-300">Research Guides</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Guides Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#003366] mb-4">Research Guides</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                    Subject-specific guides to help you navigate resources in your field of study.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Guide 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <div class="h-2 bg-[#003366]"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-[#003366] rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-[#FFCC00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#003366]">Computer Science</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Resources for programming, AI, cybersecurity, and software engineering research.</p>
+                        <a href="#" class="inline-flex items-center text-[#003366] font-semibold hover:text-[#FFCC00] transition-colors">
+                            View Guide
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Guide 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <div class="h-2 bg-[#FFCC00]"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-[#003366] rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-[#FFCC00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#003366]">Business</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Business administration, marketing, finance, and management research resources.</p>
+                        <a href="#" class="inline-flex items-center text-[#003366] font-semibold hover:text-[#FFCC00] transition-colors">
+                            View Guide
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Guide 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <div class="h-2 bg-[#003366]"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-[#003366] rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-[#FFCC00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#003366]">Education</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Educational theory, pedagogy, curriculum development, and teaching resources.</p>
+                        <a href="#" class="inline-flex items-center text-[#003366] font-semibold hover:text-[#FFCC00] transition-colors">
+                            View Guide
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Guide 4 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <div class="h-2 bg-[#FFCC00]"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-[#003366] rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-[#FFCC00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#003366]">Health Sciences</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Nursing, public health, and medical research resources and databases.</p>
+                        <a href="#" class="inline-flex items-center text-[#003366] font-semibold hover:text-[#FFCC00] transition-colors">
+                            View Guide
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Guide 5 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <div class="h-2 bg-[#003366]"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-[#003366] rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-[#FFCC00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#003366]">Social Sciences</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Psychology, sociology, social work, and development studies resources.</p>
+                        <a href="#" class="inline-flex items-center text-[#003366] font-semibold hover:text-[#FFCC00] transition-colors">
+                            View Guide
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Guide 6 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <div class="h-2 bg-[#FFCC00]"></div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-[#003366] rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-[#FFCC00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#003366]">Theology</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Biblical studies, theology, church history, and ministry resources.</p>
+                        <a href="#" class="inline-flex items-center text-[#003366] font-semibold hover:text-[#FFCC00] transition-colors">
+                            View Guide
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Citation Tools Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#003366] mb-4">Citation & Reference Management</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                    Tools to help you organize your research and format citations correctly.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-[#003366] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-[#FFCC00] font-bold text-xl">Z</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#003366] mb-2">Zotero</h3>
+                    <p class="text-gray-600 mb-4">Free, easy-to-use tool to collect, organize, cite, and share research.</p>
+                    <a href="#" class="text-[#003366] font-semibold hover:text-[#FFCC00] transition-colors">Learn More</a>
+                </div>
+
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-[#003366] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-[#FFCC00] font-bold text-xl">M</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#003366] mb-2">Mendeley</h3>
+                    <p class="text-gray-600 mb-4">Reference manager and academic social network for researchers.</p>
+                    <a href="#" class="text-[#003366] font-semibold hover:text-[#FFCC00] transition-colors">Learn More</a>
+                </div>
+
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-[#003366] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-[#FFCC00] font-bold text-xl">E</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#003366] mb-2">EndNote</h3>
+                    <p class="text-gray-600 mb-4">Industry-standard reference management software for researchers.</p>
+                    <a href="#" class="text-[#003366] font-semibold hover:text-[#FFCC00] transition-colors">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Services Section -->
+    <section class="py-16 bg-[#003366]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Research Services</h2>
+                <p class="text-blue-100 text-lg max-w-2xl mx-auto">
+                    Professional support to enhance your research capabilities.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/10 backdrop-blur rounded-xl p-6 text-center hover:bg-white/20 transition-colors duration-300">
+                    <div class="w-14 h-14 bg-[#FFCC00] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-7 h-7 text-[#003366]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Research Consultations</h3>
+                    <p class="text-blue-100 text-sm">One-on-one sessions with subject librarians.</p>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur rounded-xl p-6 text-center hover:bg-white/20 transition-colors duration-300">
+                    <div class="w-14 h-14 bg-[#FFCC00] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-7 h-7 text-[#003366]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Information Literacy</h3>
+                    <p class="text-blue-100 text-sm">Workshops on research skills and database usage.</p>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur rounded-xl p-6 text-center hover:bg-white/20 transition-colors duration-300">
+                    <div class="w-14 h-14 bg-[#FFCC00] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-7 h-7 text-[#003366]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Interlibrary Loan</h3>
+                    <p class="text-blue-100 text-sm">Request materials from other libraries.</p>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur rounded-xl p-6 text-center hover:bg-white/20 transition-colors duration-300">
+                    <div class="w-14 h-14 bg-[#FFCC00] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-7 h-7 text-[#003366]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Thesis Support</h3>
+                    <p class="text-blue-100 text-sm">Specialized assistance for dissertation research.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#003366] mb-4">Ready to Start Your Research?</h2>
+            <p class="text-gray-600 text-lg mb-8">
+                Access our comprehensive collection of resources or get personalized assistance from our librarians.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="resources.html" class="inline-flex items-center justify-center bg-[#003366] hover:bg-[#004080] text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                    Browse Resources
+                </a>
+                <a href="contact.html" class="inline-flex items-center justify-center bg-[#FFCC00] hover:bg-[#003366] hover:text-white text-[#003366] font-bold py-3 px-8 rounded-full transition-all duration-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    Request Support
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#002244] text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- About -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="logo.jpg" alt="Bugema University Logo" class="w-10 h-10 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="w-10 h-10 bg-[#FFCC00] rounded-full items-center justify-center fallback-hidden">
+                            <span class="text-[#003366] font-bold text-lg">BU</span>
+                        </div>
+                        <span class="font-semibold">Bugema University</span>
+                    </div>
+                    <p class="text-blue-200 text-sm">
+                        Empowering minds, transforming lives through quality education and research.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-bold mb-4 text-[#FFCC00]">Quick Links</h3>
+                    <ul class="space-y-2 text-sm text-blue-200">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="resources.html" class="hover:text-white transition-colors">E-Books</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="events.html" class="hover:text-white transition-colors">Digital Events</a></li>
+                        <li><a href="special.html" class="hover:text-white transition-colors">Special Books</a></li>
+                    </ul>
+                </div>
+
+                <!-- Information -->
+                <div>
+                    <h3 class="font-bold mb-4 text-[#FFCC00]">Information</h3>
+                    <ul class="space-y-2 text-sm text-blue-200">
+                        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Help</a></li>
+                        <li><a href="research_support_request.html" class="hover:text-white transition-colors">Research Support Request</a></li>
+                        <li><a href="request_book.html" class="hover:text-white transition-colors">Request a Book</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="font-bold mb-4 text-[#FFCC00]">Contact Us</h3>
+                    <ul class="space-y-2 text-sm text-blue-200">
+                        <li>library@bugema.ac.ug</li>
+                        <li>+256 123 456 789</li>
+                        <li>Kampala, Uganda</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-blue-800 mt-8 pt-8 text-center text-blue-200 text-sm">
+                <p>&copy; 2026 Bugema University Online Library. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', String(!mobileMenu.classList.contains('hidden')));
+        });
+        
+        // Close mobile menu when clicking a link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

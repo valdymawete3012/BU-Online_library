@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bugema E-Library - Role-Based Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .login-container {
+            background: linear-gradient(135deg, #003366 0%, #004080 50%, #003366 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+        }
+        .login-form {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+        }
+        .role-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #FFCC00;
+            color: #003366;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        .loading-spinner {
+            display: none;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #003366;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .error-message {
+            background: #fee;
+            border-left: 4px solid #dc2626;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        .success-message {
+            background: #f0fdf4;
+            border-left: 4px solid #16a34a;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        .quick-login-btn {
+            transition: all 0.3s ease;
+        }
+        .quick-login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form relative">
+            <!-- Role Badge (shown after login) -->
+            <div id="roleBadge" class="role-badge hidden" style="display: none;">
+                <span id="roleText"></span>
+            </div>
+
+            <!-- Logo Section -->
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-[#003366] rounded-full mb-4">
+                    <i class="fas fa-book text-white text-3xl"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-[#003366] mb-2">Bugema E-Library</h1>
+                <p class="text-gray-600">Sign in to access your digital library</p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="space-y-6">
+                <!-- Email Field -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-envelope mr-2"></i>Email Address
+                    </label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] transition-all duration-200"
+                        placeholder="Enter your email address"
+                        autocomplete="email"
+                    >
+                </div>
+
+                <!-- Password Field -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-lock mr-2"></i>Password
+                    </label>
+                    <div class="relative">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            required
+                            class="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] transition-all duration-200"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                        >
+                        <button 
+                            type="button" 
+                            id="togglePassword"
+                            class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                        >
+                            <i class="fas fa-eye" id="eyeIcon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center">
+                        <input type="checkbox" id="remember" class="mr-2 rounded border-gray-300 text-[#003366] focus:ring-[#003366]">
+                        <span class="text-sm text-gray-600">Remember me</span>
+                    </label>
+                    <a href="#" class="text-sm text-[#003366] hover:underline">Forgot password?</a>
+                </div>
+
+                <!-- Submit Button -->
+                <button 
+                    type="submit" 
+                    id="loginBtn"
+                    class="w-full bg-[#003366] text-white py-3 px-4 rounded-lg hover:bg-[#004080] transition-all duration-200 font-semibold flex items-center justify-center"
+                >
+                    <span id="loginBtnText">Sign In</span>
+                    <div id="loginSpinner" class="loading-spinner ml-2"></div>
+                </button>
+
+                <!-- Message Container -->
+                <div id="messageContainer"></div>
+            </form>
+
+            <!-- Quick Access Links -->
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <div class="text-center">
+                    <p class="text-sm text-gray-600 mb-4">Quick access by role:</p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <button 
+                            type="button" 
+                            onclick="quickLogin('admin@bugema.ac.ug', 'admin123', 'Admin')"
+                            class="quick-login-btn p-3 bg-red-50 text-red-700 rounded-lg hover:bg-red-100 transition-colors"
+                        >
+                            <i class="fas fa-user-shield block text-xl mb-2"></i>
+                            <span class="text-xs font-semibold">Admin</span>
+                        </button>
+                        <button 
+                            type="button" 
+                            onclick="quickLogin('staff@bugema.ac.ug', 'staff123', 'Staff')"
+                            class="quick-login-btn p-3 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors"
+                        >
+                            <i class="fas fa-user-tie block text-xl mb-2"></i>
+                            <span class="text-xs font-semibold">Staff</span>
+                        </button>
+                        <button 
+                            type="button" 
+                            onclick="quickLogin('student@bugema.ac.ug', 'student123', 'Student')"
+                            class="quick-login-btn p-3 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors"
+                        >
+                            <i class="fas fa-graduation-cap block text-xl mb-2"></i>
+                            <span class="text-xs font-semibold">Student</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // API Configuration
+        const API_BASE_URL = 'http://localhost:5000/api';
+        
+        // DOM Elements
+        const loginForm = document.getElementById('loginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const loginBtn = document.getElementById('loginBtn');
+        const loginBtnText = document.getElementById('loginBtnText');
+        const loginSpinner = document.getElementById('loginSpinner');
+        const messageContainer = document.getElementById('messageContainer');
+        const togglePasswordBtn = document.getElementById('togglePassword');
+        const eyeIcon = document.getElementById('eyeIcon');
+        const roleBadge = document.getElementById('roleBadge');
+        const roleText = document.getElementById('roleText');
+
+        // State
+        let isLoading = false;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check for existing token
+            const token = localStorage.getItem('elibrary_token');
+            if (token) {
+                validateExistingToken(token);
+            }
+
+            // Load remembered email if exists
+            const rememberedEmail = localStorage.getItem('elibrary_remembered_email');
+            if (rememberedEmail) {
+                emailInput.value = rememberedEmail;
+                document.getElementById('remember').checked = true;
+            }
+        });
+
+        // Event Listeners
+        loginForm.addEventListener('submit', handleLogin);
+        togglePasswordBtn.addEventListener('click', togglePasswordVisibility);
+
+        // Login Handler
+        async function handleLogin(e) {
+            e.preventDefault();
+            
+            if (isLoading) return;
+            
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+            const remember = document.getElementById('remember').checked;
+
+            // Basic validation
+            if (!email || !password) {
+                showMessage('Please enter both email and password', 'error');
+                return;
+            }
+
+            if (!validateEmail(email)) {
+                showMessage('Please enter a valid email address', 'error');
+                return;
+            }
+
+            setLoading(true);
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/role-login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.status === 'success') {
+                    // Store authentication data
+                    localStorage.setItem('elibrary_token', data.token);
+                    localStorage.setItem('elibrary_user', JSON.stringify(data.user));
+                    
+                    if (remember) {
+                        localStorage.setItem('elibrary_remembered_email', email);
+                    } else {
+                        localStorage.removeItem('elibrary_remembered_email');
+                    }
+
+                    // Show success message
+                    showMessage(`Login successful! Redirecting to ${data.user.role} dashboard...`, 'success');
+                    
+                    // Show role badge
+                    showRoleBadge(data.user.role);
+                    
+                    // Redirect after delay
+                    setTimeout(() => {
+                        window.location.href = data.redirect;
+                    }, 1500);
+
+                } else {
+                    showMessage(data.message || 'Login failed', 'error');
+                }
+
+            } catch (error) {
+                console.error('Login error:', error);
+                showMessage('Network error. Please try again.', 'error');
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        // Validate existing token
+        async function validateExistingToken(token) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/verify-token`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ token })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.status === 'success') {
+                    // Token is valid, redirect to appropriate dashboard
+                    localStorage.setItem('elibrary_user', JSON.stringify(data.user));
+                    showRoleBadge(data.user.role);
+                    
+                    showMessage(`Welcome back! Redirecting to ${data.user.role} dashboard...`, 'success');
+                    
+                    setTimeout(() => {
+                        window.location.href = data.redirectUrl;
+                    }, 1500);
+                } else {
+                    // Token is invalid, remove it
+                    localStorage.removeItem('elibrary_token');
+                    localStorage.removeItem('elibrary_user');
+                }
+            } catch (error) {
+                console.error('Token validation error:', error);
+                localStorage.removeItem('elibrary_token');
+                localStorage.removeItem('elibrary_user');
+            }
+        }
+
+        // Quick Login for Demo
+        async function quickLogin(email, password, role) {
+            emailInput.value = email;
+            passwordInput.value = password;
+            
+            // Simulate form submission
+            const event = new Event('submit');
+            loginForm.dispatchEvent(event);
+        }
+
+        // Toggle Password Visibility
+        function togglePasswordVisibility() {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            
+            if (type === 'text') {
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
+
+        // Show Role Badge
+        function showRoleBadge(role) {
+            roleText.textContent = role.toUpperCase();
+            roleBadge.style.display = 'block';
+            
+            // Color code by role
+            const colors = {
+                'Admin': 'bg-red-500 text-white',
+                'Staff': 'bg-blue-500 text-white',
+                'Student': 'bg-green-500 text-white'
+            };
+            
+            roleBadge.className = `role-badge ${colors[role] || 'bg-gray-500 text-white'}`;
+        }
+
+        // Loading State
+        function setLoading(loading) {
+            isLoading = loading;
+            loginBtn.disabled = loading;
+            
+            if (loading) {
+                loginBtnText.textContent = 'Signing In...';
+                loginSpinner.style.display = 'inline-block';
+            } else {
+                loginBtnText.textContent = 'Sign In';
+                loginSpinner.style.display = 'none';
+            }
+        }
+
+        // Show Message
+        function showMessage(message, type = 'info') {
+            const messageClass = type === 'error' ? 'error-message' : 'success-message';
+            const icon = type === 'error' ? 'fa-exclamation-circle' : 'fa-check-circle';
+            
+            messageContainer.innerHTML = `
+                <div class="${messageClass}">
+                    <i class="fas ${icon} mr-2"></i>
+                    ${message}
+                </div>
+            `;
+
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                messageContainer.innerHTML = '';
+            }, 5000);
+        }
+
+        // Email Validation
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Handle Enter key in form fields
+        emailInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                passwordInput.focus();
+            }
+        });
+
+        passwordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                loginForm.dispatchEvent(new Event('submit'));
+            }
+        });
+    </script>
+</body>
+</html>
+                    <div class="field-row">
+                        <label class="field-label" for="login-identity">Email or Username</label>
+                        <div class="input-wrap">
+                            <i class="fa-regular fa-user input-icon"></i>
+                            <input class="input has-icon" id="login-identity" type="text" placeholder="Enter your email or username" required>
+                        </div>
+                        <span class="field-hint">Use your Bugema University email or library username.</span>
+                    </div>
+                    <div class="field-row">
+                        <label class="field-label" for="login-password">Password</label>
+                        <div class="input-wrap">
+                            <i class="fa-solid fa-lock input-icon"></i>
+                            <input class="input has-icon" id="login-password" type="password" placeholder="Enter your password" required>
+                        </div>
+                        <span class="field-hint">Password must be at least 8 characters.</span>
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit" data-loading-text="Signing in...">Login</button>
+                    <div class="form-links">
+                        <a href="contact.html">Forgot password?</a>
+                        <a href="signup.html">Register</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer-inner">
+            <div class="footer-grid">
+                <div><h3 class="footer-title">About</h3><p class="footer-text">Bugema University E-Library provides trusted access to books, events, and academic support services for students and staff.</p></div>
+                <div><h3 class="footer-title">Quick Links</h3><div class="footer-links"><a href="index.html">Home</a><a href="resources.html">E-Books</a><a href="events.html">Digital Events</a><a href="special.html">Special Books</a></div></div>
+                <div><h3 class="footer-title">Services</h3><div class="footer-links"><a href="services.html">Research Support</a><a href="services.html">Printing Services</a><a href="library_service_signup.html">Service Sign-Up</a><a href="request_book.html">Request a Book</a></div></div>
+                <div><h3 class="footer-title">Contact</h3><p class="footer-text">Bugema University, Kampala<br>library@bu.ac.ug<br>+256 700 000 000</p></div>
+            </div>
+            <div class="footer-bottom"><span>&copy; 2026 Bugema University E-Library</span><span>Privacy Policy | Terms of Use | Accessibility</span></div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleSiteNav(button) {
+            const nav = document.getElementById('siteNav');
+            const open = nav.classList.toggle('is-open');
+            button.setAttribute('aria-expanded', String(open));
+        }
+        function handleLoadingSubmit(event, form) {
+            event.preventDefault();
+            const button = form.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.disabled = true;
+            button.textContent = button.dataset.loadingText || 'Loading...';
+            setTimeout(() => {
+                button.disabled = false;
+                button.textContent = originalText;
+            }, 1400);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - BU E-Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-shell">
+    <header class="site-header">
+        <div class="site-header-inner">
+            <a href="index.html" class="brand">
+                <img src="logo.png" alt="Bugema University logo">
+                <div class="brand-copy">
+                    <strong>BU E-Library</strong>
+                    <span>Digital knowledge hub</span>
+                </div>
+            </a>
+            <button class="header-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleSiteNav(this)">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <nav class="site-nav" id="siteNav">
+                <div class="site-nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="resources.html">E-Books</a>
+                    <a href="services.html">Services</a>
+                    <a href="events.html">Digital Events</a>
+                    <a href="special.html">Special Books</a>
+                    <a href="contact.html">Help</a>
+                </div>
+                <div class="site-nav-auth">
+                    <a href="login.html">Login</a>
+                    <a href="signup.html" class="is-active">Sign Up</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <section class="auth-page">
+            <div class="form-card auth-card" style="width:min(560px,100%)">
+                <img src="logo.png" alt="Bugema University logo" class="auth-logo">
+                <h1 class="auth-title">Create your account</h1>
+                <p class="auth-subtitle">Join the BU E-Library to access resources, events, and personalized services.</p>
+                <form class="form-grid" onsubmit="handleLoadingSubmit(event, this)">
+                    <div class="field-row">
+                        <label class="field-label" for="full-name">Full Name</label>
+                        <div class="input-wrap">
+                            <i class="fa-regular fa-id-badge input-icon"></i>
+                            <input class="input has-icon" id="full-name" type="text" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+                    <div class="field-split">
+                        <div class="field-row">
+                            <label class="field-label" for="email">Email</label>
+                            <div class="input-wrap">
+                                <i class="fa-regular fa-envelope input-icon"></i>
+                                <input class="input has-icon" id="email" type="email" placeholder="name@bugema.ac.ug" required>
+                            </div>
+                        </div>
+                        <div class="field-row">
+                            <label class="field-label" for="username">Username</label>
+                            <div class="input-wrap">
+                                <i class="fa-regular fa-user input-icon"></i>
+                                <input class="input has-icon" id="username" type="text" placeholder="Choose a username" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field-split">
+                        <div class="field-row">
+                            <label class="field-label" for="password">Password</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-lock input-icon"></i>
+                                <input class="input has-icon" id="password" type="password" placeholder="Create a password" required>
+                            </div>
+                        </div>
+                        <div class="field-row">
+                            <label class="field-label" for="confirm-password">Confirm Password</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-shield-halved input-icon"></i>
+                                <input class="input has-icon" id="confirm-password" type="password" placeholder="Repeat your password" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field-row">
+                        <label class="field-label" for="role">Role</label>
+                        <div class="input-wrap">
+                            <i class="fa-solid fa-user-gear input-icon"></i>
+                            <select class="select has-icon" id="role" required>
+                                <option value="">Select role</option>
+                                <option>Student</option>
+                                <option>Staff</option>
+                                <option>Admin</option>
+                            </select>
+                        </div>
+                        <span class="field-hint">Choose the role that matches your library access level.</span>
+                    </div>
+                    <label class="checkbox-row">
+                        <input type="checkbox" required>
+                        <span>I agree to the terms of use and confirm that my registration details are correct.</span>
+                    </label>
+                    <button class="btn btn-primary btn-block" type="submit" data-loading-text="Creating account...">Create Account</button>
+                    <div class="form-links">
+                        <span class="field-note">Already have an account?</span>
+                        <a href="login.html">Login</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer-inner">
+            <div class="footer-grid">
+                <div><h3 class="footer-title">About</h3><p class="footer-text">Bugema University E-Library provides trusted access to books, events, and academic support services for students and staff.</p></div>
+                <div><h3 class="footer-title">Quick Links</h3><div class="footer-links"><a href="index.html">Home</a><a href="resources.html">E-Books</a><a href="events.html">Digital Events</a><a href="special.html">Special Books</a></div></div>
+                <div><h3 class="footer-title">Services</h3><div class="footer-links"><a href="services.html">Research Support</a><a href="services.html">Printing Services</a><a href="library_service_signup.html">Service Sign-Up</a><a href="request_book.html">Request a Book</a></div></div>
+                <div><h3 class="footer-title">Contact</h3><p class="footer-text">Bugema University, Kampala<br>library@bu.ac.ug<br>+256 700 000 000</p></div>
+            </div>
+            <div class="footer-bottom"><span>&copy; 2026 Bugema University E-Library</span><span>Privacy Policy | Terms of Use | Accessibility</span></div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleSiteNav(button) {
+            const nav = document.getElementById('siteNav');
+            const open = nav.classList.toggle('is-open');
+            button.setAttribute('aria-expanded', String(open));
+        }
+        function handleLoadingSubmit(event, form) {
+            event.preventDefault();
+            const button = form.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.disabled = true;
+            button.textContent = button.dataset.loadingText || 'Loading...';
+            setTimeout(() => {
+                button.disabled = false;
+                button.textContent = originalText;
+            }, 1400);
+        }
+    </script>
+</body>
+</html>
