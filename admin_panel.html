@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Bugema University E-Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        .sidebar-item {
+            transition: all 0.3s ease;
+        }
+        .sidebar-item:hover {
+            transform: translateX(5px);
+        }
+        .table-row-hover:hover {
+            background-color: #f8fafc;
+            transform: scale(1.01);
+            transition: all 0.2s ease;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        .status-active { background-color: #10b981; color: white; }
+        .status-suspended { background-color: #ef4444; color: white; }
+        .status-available { background-color: #10b981; color: white; }
+        .status-restricted { background-color: #f59e0b; color: white; }
+        .status-archived { background-color: #6b7280; color: white; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-[#003366] text-white shadow-lg">
+        <div class="flex items-center justify-between px-6 py-4">
+            <div class="flex items-center space-x-4">
+                <button id="sidebarToggle" class="lg:hidden text-white hover:text-[#FFCC00]">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <div class="flex items-center space-x-3">
+                    <img src="logo.png" alt="Bugema University Logo" class="w-10 h-10 object-contain">
+                    <div>
+                        <h1 class="text-xl font-bold">Admin Panel</h1>
+                        <p class="text-xs text-blue-200">Bugema University E-Library</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <input type="text" placeholder="Search..." class="bg-blue-700 text-white placeholder-blue-200 px-4 py-2 pr-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                    <i class="fas fa-search absolute right-3 top-3 text-blue-200"></i>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <img src="https://picsum.photos/seed/admin/40/40" alt="Admin" class="w-10 h-10 rounded-full border-2 border-[#FFCC00]">
+                    <div>
+                        <p class="text-sm font-semibold">Admin User</p>
+                        <p class="text-xs text-blue-200">Administrator</p>
+                    </div>
+                </div>
+                <button class="bg-red-600 hover:bg-red-700 px-3 py-2 rounded-lg transition-colors">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="w-64 bg-[#002244] text-white min-h-screen transition-all duration-300">
+            <nav class="p-4">
+                <div class="space-y-2">
+                    <a href="#dashboard" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700 bg-blue-700" data-page="dashboard">
+                        <i class="fas fa-tachometer-alt w-5"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#users" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700" data-page="users">
+                        <i class="fas fa-users w-5"></i>
+                        <span>User Management</span>
+                    </a>
+                    <a href="#books" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700" data-page="books">
+                        <i class="fas fa-book w-5"></i>
+                        <span>Book Management</span>
+                    </a>
+                    <a href="#downloads" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700" data-page="downloads">
+                        <i class="fas fa-download w-5"></i>
+                        <span>Downloads</span>
+                    </a>
+                    <a href="#reports" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700" data-page="reports">
+                        <i class="fas fa-chart-bar w-5"></i>
+                        <span>Reports</span>
+                    </a>
+                    <a href="#settings" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-700" data-page="settings">
+                        <i class="fas fa-cog w-5"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6">
+            <!-- Dashboard Page -->
+            <div id="dashboard" class="page-content fade-in">
+                <h2 class="text-2xl font-bold text-[#003366] mb-6">Dashboard Overview</h2>
+                
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Total Users</p>
+                                <p class="text-3xl font-bold text-[#003366]">1,234</p>
+                                <p class="text-green-600 text-sm">+12% from last month</p>
+                            </div>
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-users text-blue-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Total Books</p>
+                                <p class="text-3xl font-bold text-[#003366]">5,678</p>
+                                <p class="text-green-600 text-sm">+8% from last month</p>
+                            </div>
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-book text-green-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Total Downloads</p>
+                                <p class="text-3xl font-bold text-[#003366]">12,345</p>
+                                <p class="text-green-600 text-sm">+25% from last month</p>
+                            </div>
+                            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-download text-purple-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Active Users</p>
+                                <p class="text-3xl font-bold text-[#003366]">892</p>
+                                <p class="text-green-600 text-sm">+5% from last month</p>
+                            </div>
+                            <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-user-check text-yellow-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-[#003366] mb-4">Recent Activity</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user-plus text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">New user registered</p>
+                                    <p class="text-sm text-gray-500">John Doe joined the library</p>
+                                </div>
+                            </div>
+                            <span class="text-sm text-gray-500">2 hours ago</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-book text-green-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">New book added</p>
+                                    <p class="text-sm text-gray-500">"Advanced Mathematics" was added</p>
+                                </div>
+                            </div>
+                            <span class="text-sm text-gray-500">5 hours ago</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-download text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Book downloaded</p>
+                                    <p class="text-sm text-gray-500">"Web Development" downloaded 15 times</p>
+                                </div>
+                            </div>
+                            <span class="text-sm text-gray-500">1 day ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Management Page -->
+            <div id="users" class="page-content hidden fade-in">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-[#003366]">User Management</h2>
+                    <button onclick="openUserModal()" class="bg-[#003366] hover:bg-[#004080] text-white px-4 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-plus mr-2"></i>Add New User
+                    </button>
+                </div>
+
+                <!-- Search and Filter -->
+                <div class="bg-white rounded-xl shadow-lg p-4 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <input type="text" id="userSearch" placeholder="Search by name or email..." class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                        <select id="roleFilter" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                            <option value="">All Roles</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Student">Student</option>
+                        </select>
+                        <select id="statusFilter" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                            <option value="">All Status</option>
+                            <option value="Active">Active</option>
+                            <option value="Suspended">Suspended</option>
+                        </select>
+                        <button onclick="filterUsers()" class="bg-[#FFCC00] hover:bg-yellow-400 text-[#003366] px-4 py-2 rounded-lg transition-colors">
+                            <i class="fas fa-filter mr-2"></i>Filter
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Users Table -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-[#003366] text-white">
+                                <tr>
+                                    <th class="px-6 py-3 text-left">User ID</th>
+                                    <th class="px-6 py-3 text-left">Full Name</th>
+                                    <th class="px-6 py-3 text-left">Email</th>
+                                    <th class="px-6 py-3 text-left">Role</th>
+                                    <th class="px-6 py-3 text-left">Status</th>
+                                    <th class="px-6 py-3 text-left">Date Registered</th>
+                                    <th class="px-6 py-3 text-left">Last Login</th>
+                                    <th class="px-6 py-3 text-left">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody">
+                                <!-- Users will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Books Management Page -->
+            <div id="books" class="page-content hidden fade-in">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-[#003366]">Book Management</h2>
+                    <button onclick="openBookModal()" class="bg-[#003366] hover:bg-[#004080] text-white px-4 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-plus mr-2"></i>Add New Book
+                    </button>
+                </div>
+
+                <!-- Search and Filter -->
+                <div class="bg-white rounded-xl shadow-lg p-4 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <input type="text" id="bookSearch" placeholder="Search by title or author..." class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                        <select id="categoryFilter" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                            <option value="">All Categories</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Information Science">Information Science</option>
+                            <option value="Research">Research</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Database">Database</option>
+                        </select>
+                        <select id="bookStatusFilter" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                            <option value="">All Status</option>
+                            <option value="Available">Available</option>
+                            <option value="Restricted">Restricted</option>
+                            <option value="Archived">Archived</option>
+                        </select>
+                        <button onclick="filterBooks()" class="bg-[#FFCC00] hover:bg-yellow-400 text-[#003366] px-4 py-2 rounded-lg transition-colors">
+                            <i class="fas fa-filter mr-2"></i>Filter
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Books Table -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-[#003366] text-white">
+                                <tr>
+                                    <th class="px-6 py-3 text-left">Book ID</th>
+                                    <th class="px-6 py-3 text-left">Title</th>
+                                    <th class="px-6 py-3 text-left">Author</th>
+                                    <th class="px-6 py-3 text-left">ISBN</th>
+                                    <th class="px-6 py-3 text-left">Category</th>
+                                    <th class="px-6 py-3 text-left">Year</th>
+                                    <th class="px-6 py-3 text-left">Status</th>
+                                    <th class="px-6 py-3 text-left">Date Added</th>
+                                    <th class="px-6 py-3 text-left">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="booksTableBody">
+                                <!-- Books will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- User Modal -->
+    <div id="userModal" class="modal">
+        <div class="bg-white rounded-xl shadow-2xl p-6 w-full max-w-md">
+            <h3 class="text-xl font-bold text-[#003366] mb-4" id="userModalTitle">Add New User</h3>
+            <form id="userForm">
+                <input type="hidden" id="userId">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                        <input type="text" id="fullName" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="email" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <input type="password" id="password" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Role</label>
+                        <select id="role" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                            <option value="Student">Student</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                        <select id="userStatus" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                            <option value="Active">Active</option>
+                            <option value="Suspended">Suspended</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex justify-end space-x-3 mt-6">
+                    <button type="button" onclick="closeUserModal()" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">Cancel</button>
+                    <button type="submit" class="bg-[#003366] hover:bg-[#004080] text-white px-4 py-2 rounded-lg transition-colors">Save User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Book Modal -->
+    <div id="bookModal" class="modal">
+        <div class="bg-white rounded-xl shadow-2xl p-6 w-full max-w-md">
+            <h3 class="text-xl font-bold text-[#003366] mb-4" id="bookModalTitle">Add New Book</h3>
+            <form id="bookForm">
+                <input type="hidden" id="bookId">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                        <input type="text" id="title" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Author</label>
+                        <input type="text" id="author" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">ISBN</label>
+                        <input type="text" id="isbn" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                        <input type="text" id="category" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Year</label>
+                        <input type="number" id="year" min="1900" max="2026" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                        <textarea id="description" rows="3" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                        <select id="bookStatus" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                            <option value="Available">Available</option>
+                            <option value="Restricted">Restricted</option>
+                            <option value="Archived">Archived</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">PDF File</label>
+                        <input type="file" id="pdfFile" accept=".pdf" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FFCC00]">
+                    </div>
+                </div>
+                <div class="flex justify-end space-x-3 mt-6">
+                    <button type="button" onclick="closeBookModal()" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">Cancel</button>
+                    <button type="submit" class="bg-[#003366] hover:bg-[#004080] text-white px-4 py-2 rounded-lg transition-colors">Save Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin_panel.js"></script>
+</body>
+</html>

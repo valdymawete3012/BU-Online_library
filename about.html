@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Bugema University Online Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-['Inter'] bg-white text-gray-800">
+    <!-- Sticky Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-[#003366] shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo at Top-Left (clickable to Home) -->
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="logo.png" alt="Bugema University Logo" class="w-14 h-14 object-contain">
+                    <span class="text-white font-semibold text-lg hidden sm:block">Bugema University</span>
+                </a>
+                
+                <!-- Centered Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">Home</a>
+                    <a href="about.html" class="nav-link text-[#FFCC00] font-medium">About</a>
+                    <a href="resources.html" class="nav-link text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">E-Books</a>
+                    <a href="services.html" class="nav-link text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">Services</a>
+                    <a href="events.html" class="nav-link text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">Digital Events</a>
+                    <a href="special.html" class="nav-link text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">Special Books</a>
+                    <a href="contact.html" class="nav-link text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">Help</a>
+                    <a href="login.html" class="nav-link text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">Login</a>
+                    <a href="signup.html" class="nav-link bg-[#FFCC00] text-[#003366] px-4 py-2 rounded-full font-semibold hover:bg-white transition-colors duration-300">Sign Up</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" type="button" aria-label="Toggle mobile navigation menu" aria-expanded="false" title="Open or close the mobile navigation menu" class="md:hidden text-white hover:text-[#FFCC00] focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#003366] border-t border-blue-800">
+            <div class="px-4 py-4 space-y-2">
+                <a href="index.html" class="mobile-nav-link block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">Home</a>
+                <a href="about.html" class="mobile-nav-link block text-[#FFCC00] py-2 font-semibold">About</a>
+                <a href="resources.html" class="mobile-nav-link block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">E-Books</a>
+                <a href="services.html" class="mobile-nav-link block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">Services</a>
+                <a href="events.html" class="mobile-nav-link block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">Digital Events</a>
+                <a href="special.html" class="mobile-nav-link block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">Special Books</a>
+                <a href="contact.html" class="mobile-nav-link block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">Help</a>
+                <a href="login.html" class="mobile-nav-link block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">Login</a>
+                <a href="signup.html" class="mobile-nav-link block bg-[#FFCC00] text-[#003366] px-4 py-2 rounded-lg font-semibold text-center mt-2">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-20 bg-gradient-to-br from-[#003366] via-[#004080] to-[#003366]">
+        <div class="absolute inset-0 opacity-10 hero-pattern-overlay"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+                About <span class="text-[#FFCC00]">Our Library</span>
+            </h1>
+            <p class="text-blue-100 text-lg md:text-xl max-w-3xl mx-auto">
+                Empowering academic excellence through innovative digital resources and exceptional service since 1948.
+            </p>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Mission -->
+                <div class="bg-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-[#003366] rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-[#FFCC00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-[#003366] mb-4">Our Mission</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        To support the teaching, learning, and research mission of Bugema University by providing access to quality information resources, fostering information literacy, and creating an environment conducive to academic excellence and intellectual growth.
+                    </p>
+                </div>
+
+                <!-- Vision -->
+                <div class="bg-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-[#003366] rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-[#FFCC00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-[#003366] mb-4">Our Vision</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        To be a leading academic library in East Africa, recognized for excellence in digital innovation, comprehensive collections, and transformative services that empower students and faculty to achieve their full potential in a rapidly changing global environment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-[#003366]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6">
+                    <div class="text-4xl md:text-5xl font-bold text-[#FFCC00] mb-2">50K+</div>
+                    <div class="text-blue-100">E-Books</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl md:text-5xl font-bold text-[#FFCC00] mb-2">100+</div>
+                    <div class="text-blue-100">Databases</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl md:text-5xl font-bold text-[#FFCC00] mb-2">5K+</div>
+                    <div class="text-blue-100">Journal Titles</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl md:text-5xl font-bold text-[#FFCC00] mb-2">24/7</div>
+                    <div class="text-blue-100">Online Access</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#003366] mb-4">Our History</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                    A journey of growth and transformation in service to our academic community.
+                </p>
+            </div>
+
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#003366]"></div>
+
+                <!-- Timeline Items -->
+                <div class="space-y-12">
+                    <!-- 1948 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
+                            <h3 class="text-xl font-bold text-[#003366]">1948</h3>
+                            <p class="text-gray-600">Bugema University founded with a small collection of theological books.</p>
+                        </div>
+                        <div class="w-8 h-8 bg-[#FFCC00] rounded-full border-4 border-[#003366] z-10"></div>
+                        <div class="md:w-1/2 md:pl-12"></div>
+                    </div>
+
+                    <!-- 1990 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12"></div>
+                        <div class="w-8 h-8 bg-[#FFCC00] rounded-full border-4 border-[#003366] z-10"></div>
+                        <div class="md:w-1/2 md:pl-12 mt-4 md:mt-0">
+                            <h3 class="text-xl font-bold text-[#003366]">1990</h3>
+                            <p class="text-gray-600">Expansion of library services to support new academic programs.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2010 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
+                            <h3 class="text-xl font-bold text-[#003366]">2010</h3>
+                            <p class="text-gray-600">Introduction of digital resources and online database subscriptions.</p>
+                        </div>
+                        <div class="w-8 h-8 bg-[#FFCC00] rounded-full border-4 border-[#003366] z-10"></div>
+                        <div class="md:w-1/2 md:pl-12"></div>
+                    </div>
+
+                    <!-- 2020 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12"></div>
+                        <div class="w-8 h-8 bg-[#FFCC00] rounded-full border-4 border-[#003366] z-10"></div>
+                        <div class="md:w-1/2 md:pl-12 mt-4 md:mt-0">
+                            <h3 class="text-xl font-bold text-[#003366]">2020</h3>
+                            <p class="text-gray-600">Launch of comprehensive Online Library platform with 24/7 access.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2026 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
+                            <h3 class="text-xl font-bold text-[#003366]">2026</h3>
+                            <p class="text-gray-600">Modernized digital library serving over 10,000 students and faculty worldwide.</p>
+                        </div>
+                        <div class="w-8 h-8 bg-[#FFCC00] rounded-full border-4 border-[#003366] z-10"></div>
+                        <div class="md:w-1/2 md:pl-12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#003366] mb-4">Library Leadership</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                    Meet the dedicated professionals behind our library services.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-gray-50 rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-24 h-24 bg-[#003366] rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-[#FFCC00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#003366] mb-1">Dr. Sarah Namuli</h3>
+                    <p class="text-[#FFCC00] font-medium mb-3">University Librarian</p>
+                    <p class="text-gray-600 text-sm">Leading library operations with over 20 years of experience in academic librarianship.</p>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="bg-gray-50 rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-24 h-24 bg-[#003366] rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-[#FFCC00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#003366] mb-1">Mr. John Okello</h3>
+                    <p class="text-[#FFCC00] font-medium mb-3">Head of Digital Services</p>
+                    <p class="text-gray-600 text-sm">Overseeing digital resources and technology infrastructure for the online library.</p>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="bg-gray-50 rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-24 h-24 bg-[#003366] rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-[#FFCC00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#003366] mb-1">Ms. Grace Auma</h3>
+                    <p class="text-[#FFCC00] font-medium mb-3">Reference Librarian</p>
+                    <p class="text-gray-600 text-sm">Providing research support and information literacy instruction to students and faculty.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#003366] mb-4">Our Core Values</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                    The principles that guide our service to the academic community.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
+                    <div class="w-14 h-14 bg-[#003366] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-7 h-7 text-[#FFCC00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-[#003366] mb-2">Excellence</h3>
+                    <p class="text-gray-600 text-sm">Commitment to providing the highest quality resources and services.</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
+                    <div class="w-14 h-14 bg-[#003366] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-7 h-7 text-[#FFCC00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-[#003366] mb-2">Accessibility</h3>
+                    <p class="text-gray-600 text-sm">Ensuring resources are available to all members of our community.</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
+                    <div class="w-14 h-14 bg-[#003366] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-7 h-7 text-[#FFCC00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-[#003366] mb-2">Innovation</h3>
+                    <p class="text-gray-600 text-sm">Embracing new technologies and methods to enhance learning.</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
+                    <div class="w-14 h-14 bg-[#003366] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-7 h-7 text-[#FFCC00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-[#003366] mb-2">Integrity</h3>
+                    <p class="text-gray-600 text-sm">Upholding ethical standards in all our services and practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-[#003366]">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Explore?</h2>
+            <p class="text-blue-100 text-lg mb-8">
+                Access thousands of resources and start your research journey today.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="signup.html" class="inline-flex items-center justify-center bg-[#FFCC00] hover:bg-white text-[#003366] font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+                    </svg>
+                    Access Login Page
+                </a>
+                <a href="contact.html" class="inline-flex items-center justify-center bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#003366] font-bold py-3 px-8 rounded-full transition-all duration-300">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#002244] text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- About -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="logo.jpg" alt="Bugema University Logo" class="w-10 h-10 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="w-10 h-10 bg-[#FFCC00] rounded-full items-center justify-center fallback-hidden">
+                            <span class="text-[#003366] font-bold text-lg">BU</span>
+                        </div>
+                        <span class="font-semibold">Bugema University</span>
+                    </div>
+                    <p class="text-blue-200 text-sm">
+                        Empowering minds, transforming lives through quality education and research.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-bold mb-4 text-[#FFCC00]">Quick Links</h3>
+                    <ul class="space-y-2 text-sm text-blue-200">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="resources.html" class="hover:text-white transition-colors">E-Books</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="events.html" class="hover:text-white transition-colors">Digital Events</a></li>
+                        <li><a href="special.html" class="hover:text-white transition-colors">Special Books</a></li>
+                    </ul>
+                </div>
+
+                <!-- Information -->
+                <div>
+                    <h3 class="font-bold mb-4 text-[#FFCC00]">Information</h3>
+                    <ul class="space-y-2 text-sm text-blue-200">
+                        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Help</a></li>
+                        <li><a href="request_book.html" class="hover:text-white transition-colors">Request a Book</a></li>
+                        <li><a href="library_service_signup.html" class="hover:text-white transition-colors">Service Sign-Up</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="font-bold mb-4 text-[#FFCC00]">Contact Us</h3>
+                    <ul class="space-y-2 text-sm text-blue-200">
+                        <li>library@bugema.ac.ug</li>
+                        <li>+256 123 456 789</li>
+                        <li>Kampala, Uganda</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-blue-800 mt-8 pt-8 text-center text-blue-200 text-sm">
+                <p>&copy; 2026 Bugema University Online Library. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', String(!mobileMenu.classList.contains('hidden')));
+        });
+        
+        // Close mobile menu when clicking a link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

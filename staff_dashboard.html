@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard - BU E-Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <aside class="dashboard-sidebar">
+            <a href="index.html" class="brand">
+                <img src="logo.png" alt="Bugema University logo">
+                <div class="brand-copy">
+                    <strong>BU E-Library</strong>
+                    <span>Staff workspace</span>
+                </div>
+            </a>
+            <div class="sidebar-section-title">Staff Menu</div>
+            <nav class="sidebar-nav">
+                <a href="staff_dashboard.html" class="sidebar-link is-active"><i class="fa-solid fa-chart-pie"></i><span>Dashboard</span></a>
+                <a href="#" class="sidebar-link"><i class="fa-solid fa-inbox"></i><span>Requests</span></a>
+                <a href="#" class="sidebar-link"><i class="fa-solid fa-book-open"></i><span>Books</span></a>
+                <a href="#" class="sidebar-link"><i class="fa-solid fa-calendar-days"></i><span>Events</span></a>
+                <a href="#" class="sidebar-link"><i class="fa-solid fa-bell"></i><span>Notifications</span></a>
+                <a href="#" class="sidebar-link"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+            </nav>
+        </aside>
+
+        <main class="dashboard-content">
+            <div class="dashboard-topbar">
+                <div class="dashboard-search">
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-magnifying-glass input-icon"></i>
+                        <input class="input has-icon" type="search" placeholder="Search requests, books, and event tasks">
+                    </div>
+                </div>
+                <div class="topbar-actions">
+                    <button class="icon-button" type="button" aria-label="Notifications"><i class="fa-regular fa-bell"></i></button>
+                    <div class="profile-chip">
+                        <span class="avatar">ST</span>
+                        <div><strong>Library Staff</strong><div class="field-note">Service desk</div></div>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="surface-card stat-card"><div class="stat-label">Open Tasks</div><div class="stat-value">18</div><div class="stat-meta">5 due today</div></div>
+                <div class="surface-card stat-card"><div class="stat-label">Requests Queue</div><div class="stat-value">47</div><div class="stat-meta">12 high priority</div></div>
+                <div class="surface-card stat-card"><div class="stat-label">Books Updated</div><div class="stat-value">23</div><div class="stat-meta">This week</div></div>
+                <div class="surface-card stat-card"><div class="stat-label">Upcoming Events</div><div class="stat-value">6</div><div class="stat-meta">2 this week</div></div>
+            </div>
+
+            <div class="dashboard-grid">
+                <section class="dashboard-stack">
+                    <div class="dashboard-panel">
+                        <div class="panel-header">
+                            <div><h2 class="panel-title">Task Cards</h2><p class="panel-subtitle">Daily work items for requests, inventory, and support.</p></div>
+                        </div>
+                        <div class="task-list">
+                            <div class="list-item"><p class="list-item-title">Review 8 pending book requests</p><p class="list-item-meta">Prioritize nursing and business titles requested today.</p></div>
+                            <div class="list-item"><p class="list-item-title">Verify uploaded catalog records</p><p class="list-item-meta">Check metadata and cover images for 6 new books.</p></div>
+                            <div class="list-item"><p class="list-item-title">Prepare webinar attendance list</p><p class="list-item-meta">Export the registration list before 2:00 PM.</p></div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-panel">
+                        <div class="panel-header">
+                            <div><h2 class="panel-title">Requests Handling</h2><p class="panel-subtitle">Most recent service and book requests.</p></div>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="data-table">
+                                <thead><tr><th>User</th><th>Type</th><th>Date</th><th>Status</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Esther M.</td><td>Request a Book</td><td>29 Apr</td><td><span class="status-badge status-pending">Pending</span></td></tr>
+                                    <tr><td>Paul K.</td><td>Printing Request</td><td>29 Apr</td><td><span class="status-badge status-success">Ready</span></td></tr>
+                                    <tr><td>Mercy A.</td><td>Research Support</td><td>28 Apr</td><td><span class="status-badge status-pending">Assigned</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="dashboard-stack">
+                    <div class="dashboard-panel">
+                        <div class="panel-header">
+                            <div><h2 class="panel-title">Quick Actions</h2><p class="panel-subtitle">Common tools for day-to-day library work.</p></div>
+                        </div>
+                        <div class="quick-actions">
+                            <a href="request_book.html" class="btn btn-primary"><i class="fa-solid fa-plus"></i>New Request</a>
+                            <a href="printing_request.html" class="btn btn-secondary"><i class="fa-solid fa-print"></i>Print Job</a>
+                            <a href="event_registration.html" class="btn btn-secondary"><i class="fa-solid fa-calendar-plus"></i>Add Event</a>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-panel">
+                        <div class="panel-header">
+                            <div><h2 class="panel-title">Notifications</h2><p class="panel-subtitle">Updates from users and system activity.</p></div>
+                        </div>
+                        <div class="notification-list">
+                            <div class="list-item"><p class="list-item-title">New service sign-up received</p><p class="list-item-meta">Submitted by David N. 10 minutes ago.</p></div>
+                            <div class="list-item"><p class="list-item-title">Event seats nearly full</p><p class="list-item-meta">Research Writing Clinic has 4 seats remaining.</p></div>
+                            <div class="list-item"><p class="list-item-title">Catalog sync completed</p><p class="list-item-meta">Database update finished successfully.</p></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

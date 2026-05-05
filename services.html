@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Services - Bugema University Online Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="font-['Inter'] bg-white text-gray-800">
+    <nav class="sticky top-0 z-50 bg-[#003366] shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="logo.png" alt="Bugema University Logo" class="w-14 h-14 object-contain">
+                    <span class="text-white font-semibold text-lg hidden sm:block">Bugema University</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">Home</a>
+                    <a href="about.html" class="text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">About</a>
+                    <a href="resources.html" class="text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">E-Books</a>
+                    <a href="services.html" class="text-[#FFCC00] font-medium">Services</a>
+                    <a href="events.html" class="text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">Digital Events</a>
+                    <a href="special.html" class="text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">Special Books</a>
+                    <a href="contact.html" class="text-white hover:text-[#FFCC00] transition-colors duration-300 font-medium">Help</a>
+                    <a href="login.html" class="bg-[#FFCC00] text-[#003366] px-4 py-2 rounded-full font-semibold hover:bg-white transition-colors duration-300">Login</a>
+                    <a href="signup.html" class="bg-[#FFCC00] text-[#003366] px-4 py-2 rounded-full font-semibold hover:bg-white transition-colors duration-300">Sign Up</a>
+                </div>
+                <button id="mobile-menu-btn" type="button" aria-label="Toggle mobile navigation menu" aria-expanded="false" class="md:hidden text-white hover:text-[#FFCC00] focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-[#003366] border-t border-blue-800">
+            <div class="px-4 py-4 space-y-2">
+                <a href="index.html" class="block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">Home</a>
+                <a href="about.html" class="block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">About</a>
+                <a href="resources.html" class="block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">E-Books</a>
+                <a href="events.html" class="block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">Digital Events</a>
+                <a href="services.html" class="block text-[#FFCC00] py-2 font-semibold">Services</a>
+                <a href="special.html" class="block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">Special Books</a>
+                <a href="contact.html" class="block text-white hover:text-[#FFCC00] py-2 transition-colors duration-300">Help</a>
+                <a href="login.html" class="block bg-[#FFCC00] text-[#003366] px-4 py-2 rounded-lg font-semibold text-center mt-2">Login</a>
+                <a href="signup.html" class="block bg-[#FFCC00] text-[#003366] px-4 py-2 rounded-lg font-semibold text-center mt-2">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative py-20 bg-gradient-to-br from-[#003366] via-[#004080] to-[#003366]">
+        <div class="absolute inset-0 opacity-10 hero-pattern-overlay"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">Library <span class="text-[#FFCC00]">Services</span></h1>
+            <p class="text-blue-100 text-lg md:text-xl max-w-3xl mx-auto">Support for your academic journey through guided library services, digital help, and study support.</p>
+        </div>
+    </section>
+
+    <main class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"><div class="h-2 bg-[#003366]"></div><div class="p-6"><div class="w-14 h-14 bg-[#003366] rounded-xl flex items-center justify-center text-white font-bold mb-4">EB</div><h2 class="text-xl font-bold text-[#003366] mb-2">E-Book Access</h2><p class="text-gray-600 mb-6">Browse and download academic resources.</p><a href="resources.html" class="inline-flex items-center text-[#003366] font-semibold hover:text-[#FFCC00] transition-colors duration-300">Browse Resources</a></div></article>
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"><div class="h-2 bg-[#FFCC00]"></div><div class="p-6"><div class="w-14 h-14 bg-[#FFCC00] rounded-xl flex items-center justify-center text-[#003366] font-bold mb-4">RS</div><h2 class="text-xl font-bold text-[#003366] mb-2">Research Support</h2><p class="text-gray-600 mb-6">Consultation, citations, literature review.</p><a href="research.html" class="inline-flex items-center text-[#003366] font-semibold hover:text-[#FFCC00] transition-colors duration-300">Get Support</a></div></article>
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"><div class="h-2 bg-[#004080]"></div><div class="p-6"><div class="w-14 h-14 bg-[#004080] rounded-xl flex items-center justify-center text-white font-bold mb-4">PS</div><h2 class="text-xl font-bold text-[#003366] mb-2">Printing Services</h2><p class="text-gray-600 mb-6">Print, scan, binding requests.</p><a href="contact.html" class="inline-flex items-center text-[#003366] font-semibold hover:text-[#FFCC00] transition-colors duration-300">Make Request</a></div></article>
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"><div class="h-2 bg-[#003366]"></div><div class="p-6"><div class="w-14 h-14 bg-[#003366] rounded-xl flex items-center justify-center text-white font-bold mb-4">DE</div><h2 class="text-xl font-bold text-[#003366] mb-2">Digital Events</h2><p class="text-gray-600 mb-6">Webinars, workshops, training.</p><a href="events.html" class="inline-flex items-center text-[#003366] font-semibold hover:text-[#FFCC00] transition-colors duration-300">View Events</a></div></article>
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"><div class="h-2 bg-[#FFCC00]"></div><div class="p-6"><div class="w-14 h-14 bg-[#FFCC00] rounded-xl flex items-center justify-center text-[#003366] font-bold mb-4">IL</div><h2 class="text-xl font-bold text-[#003366] mb-2">Inter-Library Loans</h2><p class="text-gray-600 mb-6">Request books from partner institutions.</p><a href="contact.html" class="inline-flex items-center text-[#003366] font-semibold hover:text-[#FFCC00] transition-colors duration-300">Request Loan</a></div></article>
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"><div class="h-2 bg-[#004080]"></div><div class="p-6"><div class="w-14 h-14 bg-[#004080] rounded-xl flex items-center justify-center text-white font-bold mb-4">SR</div><h2 class="text-xl font-bold text-[#003366] mb-2">Study Room Booking</h2><p class="text-gray-600 mb-6">Reserve study spaces.</p><a href="contact.html" class="inline-flex items-center text-[#003366] font-semibold hover:text-[#FFCC00] transition-colors duration-300">Reserve Room</a></div></article>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#003366] text-white pt-14 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div><h3 class="text-xl font-bold text-[#FFCC00] mb-4">About</h3><p class="text-blue-100">Bugema University E-Library supports learning, research, and digital access to academic resources for students and staff.</p></div>
+                <div><h3 class="text-xl font-bold text-[#FFCC00] mb-4">Quick Links</h3><ul class="space-y-2 text-blue-100"><li><a href="index.html" class="hover:text-[#FFCC00] transition-colors duration-300">Home</a></li><li><a href="about.html" class="hover:text-[#FFCC00] transition-colors duration-300">About</a></li><li><a href="resources.html" class="hover:text-[#FFCC00] transition-colors duration-300">E-Books</a></li><li><a href="services.html" class="hover:text-[#FFCC00] transition-colors duration-300">Services</a></li><li><a href="events.html" class="hover:text-[#FFCC00] transition-colors duration-300">Digital Events</a></li><li><a href="special.html" class="hover:text-[#FFCC00] transition-colors duration-300">Special Books</a></li></ul></div>
+                <div><h3 class="text-xl font-bold text-[#FFCC00] mb-4">Services</h3><ul class="space-y-2 text-blue-100"><li><a href="services.html" class="hover:text-[#FFCC00] transition-colors duration-300">Printing Services</a></li><li><a href="services.html" class="hover:text-[#FFCC00] transition-colors duration-300">Research Support</a></li><li><a href="services.html" class="hover:text-[#FFCC00] transition-colors duration-300">Study Room Booking</a></li><li><a href="services.html" class="hover:text-[#FFCC00] transition-colors duration-300">Inter-Library Loans</a></li></ul></div>
+                <div><h3 class="text-xl font-bold text-[#FFCC00] mb-4">Contact</h3><div class="space-y-2 text-blue-100"><p>Bugema University, Kampala</p><p>library@bu.ac.ug</p><p>+256 700 000 000</p></div></div>
+            </div>
+            <div class="border-t border-blue-800 mt-10 pt-6 flex flex-col md:flex-row justify-between gap-4 text-blue-200 text-sm">
+                <p>&copy; 2026 Bugema University E-Library</p>
+                <p>Privacy Policy | Terms of Use | Accessibility</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            menu.classList.toggle('hidden');
+            this.setAttribute('aria-expanded', String(!expanded));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role-Based Authentication Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .test-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .test-result {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        .success {
+            background: #f0fdf4;
+            border-left: 4px solid #16a34a;
+            color: #16a34a;
+        }
+        .error {
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
+            color: #dc2626;
+        }
+        .info {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            color: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Role-Based Authentication Test</h1>
+            <p class="text-gray-600">Test the complete authentication and redirection system</p>
+        </header>
+
+        <!-- Test Login Section -->
+        <section class="test-section">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Test Role-Based Login</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Admin Login Test -->
+                <div class="border-2 border-red-200 rounded-lg p-4">
+                    <h3 class="text-lg font-semibold text-red-700 mb-4">Admin Login Test</h3>
+                    <button onclick="testLogin('admin@bugema.ac.ug', 'admin123', 'Admin')" 
+                            class="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors">
+                        <i class="fas fa-user-shield mr-2"></i>Test Admin Login
+                    </button>
+                    <div id="adminResult" class="test-result mt-4" style="display: none;"></div>
+                </div>
+
+                <!-- Staff Login Test -->
+                <div class="border-2 border-blue-200 rounded-lg p-4">
+                    <h3 class="text-lg font-semibold text-blue-700 mb-4">Staff Login Test</h3>
+                    <button onclick="testLogin('staff@bugema.ac.ug', 'staff123', 'Staff')" 
+                            class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
+                        <i class="fas fa-user-tie mr-2"></i>Test Staff Login
+                    </button>
+                    <div id="staffResult" class="test-result mt-4" style="display: none;"></div>
+                </div>
+
+                <!-- Student Login Test -->
+                <div class="border-2 border-green-200 rounded-lg p-4">
+                    <h3 class="text-lg font-semibold text-green-700 mb-4">Student Login Test</h3>
+                    <button onclick="testLogin('student@bugema.ac.ug', 'student123', 'Student')" 
+                            class="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
+                        <i class="fas fa-graduation-cap mr-2"></i>Test Student Login
+                    </button>
+                    <div id="studentResult" class="test-result mt-4" style="display: none;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Test Section -->
+        <section class="test-section">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">API Endpoint Tests</h2>
+            
+            <div class="space-y-4">
+                <button onclick="testHealthEndpoint()" 
+                        class="bg-purple-500 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition-colors">
+                    <i class="fas fa-heartbeat mr-2"></i>Test Health Endpoint
+                </button>
+                <button onclick="testRedirectInfo()" 
+                        class="bg-indigo-500 text-white py-2 px-4 rounded-lg hover:bg-indigo-600 transition-colors">
+                    <i class="fas fa-route mr-2"></i>Test Redirect Info
+                </button>
+                <button onclick="testTokenVerification()" 
+                        class="bg-pink-500 text-white py-2 px-4 rounded-lg hover:bg-pink-600 transition-colors">
+                    <i class="fas fa-shield-alt mr-2"></i>Test Token Verification
+                </button>
+            </div>
+            
+            <div id="apiResults" class="space-y-4 mt-6"></div>
+        </section>
+
+        <!-- Error Handling Tests -->
+        <section class="test-section">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Error Handling Tests</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <button onclick="testInvalidCredentials()" 
+                        class="bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-orange-600 transition-colors">
+                    <i class="fas fa-times-circle mr-2"></i>Test Invalid Credentials
+                </button>
+                <button onclick="testMissingFields()" 
+                        class="bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>Test Missing Fields
+                </button>
+            </div>
+            
+            <div id="errorResults" class="space-y-4 mt-6"></div>
+        </section>
+
+        <!-- Current Session Info -->
+        <section class="test-section">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Current Session</h2>
+            
+            <div class="bg-gray-50 rounded-lg p-4">
+                <div id="sessionInfo" class="space-y-2">
+                    <p class="text-gray-600">No active session</p>
+                </div>
+                <button onclick="clearSession()" 
+                        class="mt-4 bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors">
+                    <i class="fas fa-sign-out-alt mr-2"></i>Clear Session
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:5000/api';
+
+        // Update session info display
+        function updateSessionInfo() {
+            const token = localStorage.getItem('elibrary_token');
+            const user = JSON.parse(localStorage.getItem('elibrary_user') || '{}');
+            
+            const sessionInfo = document.getElementById('sessionInfo');
+            
+            if (token && user.id) {
+                sessionInfo.innerHTML = `
+                    <div class="space-y-2">
+                        <p><strong>Token:</strong> ${token.substring(0, 20)}...</p>
+                        <p><strong>User ID:</strong> ${user.id}</p>
+                        <p><strong>Name:</strong> ${user.fullName || 'N/A'}</p>
+                        <p><strong>Email:</strong> ${user.email || 'N/A'}</p>
+                        <p><strong>Role:</strong> <span class="px-2 py-1 rounded text-white text-sm ${
+                            user.role === 'Admin' ? 'bg-red-500' : 
+                            user.role === 'Staff' ? 'bg-blue-500' : 'bg-green-500'
+                        }">${user.role || 'N/A'}</span></p>
+                        <p><strong>Status:</strong> ${user.status || 'N/A'}</p>
+                    </div>
+                `;
+            } else {
+                sessionInfo.innerHTML = '<p class="text-gray-600">No active session</p>';
+            }
+        }
+
+        // Test login function
+        async function testLogin(email, password, expectedRole) {
+            const resultDiv = document.getElementById(expectedRole.toLowerCase() + 'Result');
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'test-result info';
+            resultDiv.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Testing login...';
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/role-login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.status === 'success') {
+                    // Store authentication data
+                    localStorage.setItem('elibrary_token', data.token);
+                    localStorage.setItem('elibrary_user', JSON.stringify(data.user));
+
+                    resultDiv.className = 'test-result success';
+                    resultDiv.innerHTML = `
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <strong>Success!</strong><br>
+                        Role: ${data.user.role}<br>
+                        Redirect: ${data.redirect}<br>
+                        Token: ${data.token.substring(0, 20)}...
+                    `;
+
+                    // Test redirection after 2 seconds
+                    setTimeout(() => {
+                        if (data.redirect) {
+                            resultDiv.innerHTML += `<br><br><a href="${data.redirect}" target="_blank" class="text-blue-600 underline">Test Dashboard Link</a>`;
+                        }
+                    }, 2000);
+
+                } else {
+                    resultDiv.className = 'test-result error';
+                    resultDiv.innerHTML = `
+                        <i class="fas fa-times-circle mr-2"></i>
+                        <strong>Failed:</strong> ${data.message || 'Unknown error'}
+                    `;
+                }
+
+            } catch (error) {
+                resultDiv.className = 'test-result error';
+                resultDiv.innerHTML = `
+                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                    <strong>Network Error:</strong> ${error.message}
+                `;
+            }
+
+            // Update session info
+            updateSessionInfo();
+        }
+
+        // Test health endpoint
+        async function testHealthEndpoint() {
+            addApiResult('Testing Health Endpoint...', 'info');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/health`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    addApiResult(`Health Check: ${data.status} - Database: ${data.database}`, 'success');
+                } else {
+                    addApiResult(`Health Check Failed: ${data.message}`, 'error');
+                }
+            } catch (error) {
+                addApiResult(`Health Check Error: ${error.message}`, 'error');
+            }
+        }
+
+        // Test redirect info
+        async function testRedirectInfo() {
+            addApiResult('Testing Redirect Info...', 'info');
+            
+            const token = localStorage.getItem('elibrary_token');
+            if (!token) {
+                addApiResult('No token found. Please login first.', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/redirect-info`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    addApiResult(`Redirect Info: ${data.data.role} -> ${data.data.redirectUrl}`, 'success');
+                } else {
+                    addApiResult(`Redirect Info Failed: ${data.message}`, 'error');
+                }
+            } catch (error) {
+                addApiResult(`Redirect Info Error: ${error.message}`, 'error');
+            }
+        }
+
+        // Test token verification
+        async function testTokenVerification() {
+            addApiResult('Testing Token Verification...', 'info');
+            
+            const token = localStorage.getItem('elibrary_token');
+            if (!token) {
+                addApiResult('No token found. Please login first.', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/verify-token`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ token })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    addApiResult(`Token Valid: ${data.user.role} -> ${data.redirectUrl}`, 'success');
+                } else {
+                    addApiResult(`Token Invalid: ${data.message}`, 'error');
+                }
+            } catch (error) {
+                addApiResult(`Token Verification Error: ${error.message}`, 'error');
+            }
+        }
+
+        // Test invalid credentials
+        async function testInvalidCredentials() {
+            addErrorResult('Testing Invalid Credentials...', 'info');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/role-login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ 
+                        email: 'invalid@example.com', 
+                        password: 'wrongpassword' 
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.status === 401) {
+                    addErrorResult('Invalid Credentials: Correctly returned 401 Unauthorized', 'success');
+                } else {
+                    addErrorResult(`Unexpected Response: ${response.status} - ${data.message}`, 'error');
+                }
+            } catch (error) {
+                addErrorResult(`Invalid Credentials Error: ${error.message}`, 'error');
+            }
+        }
+
+        // Test missing fields
+        async function testMissingFields() {
+            addErrorResult('Testing Missing Fields...', 'info');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/role-login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ 
+                        email: '', 
+                        password: '' 
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.status === 400) {
+                    addErrorResult('Missing Fields: Correctly returned 400 Bad Request', 'success');
+                } else {
+                    addErrorResult(`Unexpected Response: ${response.status} - ${data.message}`, 'error');
+                }
+            } catch (error) {
+                addErrorResult(`Missing Fields Error: ${error.message}`, 'error');
+            }
+        }
+
+        // Helper functions to add results
+        function addApiResult(message, type) {
+            const apiResults = document.getElementById('apiResults');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${type}`;
+            resultDiv.innerHTML = `<i class="fas fa-info-circle mr-2"></i>${message}`;
+            apiResults.appendChild(resultDiv);
+        }
+
+        function addErrorResult(message, type) {
+            const errorResults = document.getElementById('errorResults');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${type}`;
+            resultDiv.innerHTML = `<i class="fas fa-info-circle mr-2"></i>${message}`;
+            errorResults.appendChild(resultDiv);
+        }
+
+        // Clear session
+        function clearSession() {
+            localStorage.removeItem('elibrary_token');
+            localStorage.removeItem('elibrary_user');
+            updateSessionInfo();
+            
+            // Clear all test results
+            document.querySelectorAll('.test-result').forEach(result => {
+                result.style.display = 'none';
+            });
+            
+            document.getElementById('apiResults').innerHTML = '';
+            document.getElementById('errorResults').innerHTML = '';
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateSessionInfo();
+        });
+    </script>
+</body>
+</html>
